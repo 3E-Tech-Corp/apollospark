@@ -1,0 +1,44 @@
+name: Cleanup Old Site
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: self-hosted
+    steps:
+      - name: Remove old apollospark.synthia.bot site
+        shell: powershell
+        run: |
+          Import-Module WebAdministration
+
+          $oldSiteName = "apollospark.synthia.bot"
+
+          # Remove IIS site
+          $site = Get-Website -Name $oldSiteName -ErrorAction SilentlyContinue
+          if ($site) {
+            Remove-Website -Name $oldSiteName
+            Write-Host "Removed site: $oldSiteName" -ForegroundColor Green
+          } else {
+            Write-Host "Site not found: $oldSiteName" -ForegroundColor Yellow
+          }
+
+          # Remove App Pool
+          if (Test-Path "IIS:\AppPools\$oldSiteName") {
+            try { Stop-WebAppPool -Name $oldSiteName -ErrorAction SilentlyContinue } catch {}
+            Remove-WebAppPool -Name $oldSiteName
+            Write-Host "Removed app pool: $oldSiteName" -ForegroundColor Green
+          } else {
+            Write-Host "App pool not found: $oldSiteName" -ForegroundColor Yellow
+          }
+
+          # Drop old database
+          try {
+            $sql = "IF EXISTS (SELECT name FROM sys.databases WHERE name = 'apollospark_DB') BEGIN ALTER DATABASE [apollospark_DB] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE [apollospark_DB]; PRINT 'DB dropped'; END ELSE PRINT 'DB not found';"
+            Invoke-Sqlcmd -Query $sql -ServerInstance "localhost"
+            Write-Host "Old database handled" -ForegroundColor Green
+          } catch {
+            Write-Host "DB cleanup: $_" -ForegroundColor Yellow
+          }
+
+          Write-Host "`nCleanup complete. Demo_2_ApolloSpark should now serve apollospark.synthia.bot" -ForegroundColor Cyan
