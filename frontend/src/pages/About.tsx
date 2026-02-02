@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useI18n } from '../contexts/I18nContext';
 import { contentApi, type ContentBlock } from '../services/api';
+import ImageCarousel from '../components/ImageCarousel';
 
 export default function About() {
   const { t, locale } = useI18n();
@@ -50,17 +51,22 @@ export default function About() {
             </p>
           </div>
 
-          {/* Photo Gallery */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <div className="rounded-2xl overflow-hidden border border-indigo-700/30 aspect-[3/4]">
-              <img src="/images/lynn-headshot.jpg" alt="Lynn Young portrait" className="w-full h-full object-cover" />
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-amber-700/30 aspect-[3/4]">
-              <img src="/images/lynn-stage.jpg" alt="Lynn Young performing on stage" className="w-full h-full object-cover" />
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-indigo-700/30 aspect-[3/4]">
-              <img src="/images/lynn-gala.jpg" alt="Lynn Young at cultural gala" className="w-full h-full object-cover" />
-            </div>
+          {/* Photo Carousel */}
+          <div className="max-w-2xl mx-auto mb-16">
+            <ImageCarousel
+              images={[
+                { src: '/images/lynn-4.jpg', alt: 'Lynn Young — artistic portrait in red' },
+                { src: '/images/lynn-3.jpg', alt: 'Lynn Young performing on stage' },
+                { src: '/images/lynn-headshot.jpg', alt: 'Lynn Young portrait' },
+                { src: '/images/lynn-1.jpg', alt: 'Lynn Young — casual portrait' },
+                { src: '/images/lynn-5.jpg', alt: 'Lynn Young — elegant close-up' },
+                { src: '/images/lynn-2.jpg', alt: 'Lynn Young — denim editorial' },
+                { src: '/images/lynn-stage.jpg', alt: 'Lynn Young on stage' },
+                { src: '/images/lynn-gala.jpg', alt: 'Lynn Young at cultural gala' },
+              ]}
+              autoPlayMs={4500}
+              className="aspect-[3/4] border border-indigo-700/30 rounded-2xl"
+            />
           </div>
 
           {/* Bio Text */}
