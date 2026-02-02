@@ -1,0 +1,57 @@
+name: Fix IIS Bindings
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: self-hosted
+    steps:
+      - name: Remove wildcard bindings and old sites
+        shell: powershell
+        run: |
+          Import-Module WebAdministration
+
+          # 1. Remove *.synthia.bot wildcard bindings from main synthia.bot site
+          Write-Host ">> Removing wildcard bindings from synthia.bot site..." -ForegroundColor Yellow
+          
+          $mainSite = Get-Website -Name "synthia.bot" -ErrorAction SilentlyContinue
+          if ($mainSite) {
+            $bindings = Get-WebBinding -Name "synthia.bot" | Where-Object { $_.bindingInformation -like "*:*.synthia.bot" }
+            foreach ($b in $bindings) {
+              Write-Host "   Removing: $($b.protocol) $($b.bindingInformation)" -ForegroundColor Yellow
+              Remove-WebBinding -Name "synthia.bot" -Protocol $b.protocol -BindingInformation $b.bindingInformation
+            }
+            Write-Host "   Wildcard bindings removed" -ForegroundColor Green
+          } else {
+            Write-Host "   synthia.bot site not found" -ForegroundColor Gray
+          }
+
+          # 2. Remove old Demo_2_ApolloSpark site
+          Write-Host "`n>> Removing Demo_2_ApolloSpark..." -ForegroundColor Yellow
+          
+          $oldSite = Get-Website -Name "Demo_2_ApolloSpark" -ErrorAction SilentlyContinue
+          if ($oldSite) {
+            try { Stop-WebAppPool -Name "Demo_2_ApolloSpark" -ErrorAction SilentlyContinue } catch {}
+            Start-Sleep -Seconds 2
+            Remove-Website -Name "Demo_2_ApolloSpark"
+            Remove-WebAppPool -Name "Demo_2_ApolloSpark" -ErrorAction SilentlyContinue
+            Write-Host "   Site + pool removed" -ForegroundColor Green
+          }
+
+          # Drop Demo_2 DB
+          try {
+            $sql = "IF EXISTS (SELECT name FROM sys.databases WHERE name = 'Demo_2_ApolloSpark') BEGIN ALTER DATABASE [Demo_2_ApolloSpark] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE [Demo_2_ApolloSpark]; PRINT 'Dropped'; END ELSE PRINT 'Not found';"
+            Invoke-Sqlcmd -Query $sql -ServerInstance "localhost"
+            Write-Host "   Demo_2 DB handled" -ForegroundColor Green
+          } catch {
+            Write-Host "   DB: $_" -ForegroundColor Yellow
+          }
+
+          # 3. Verify remaining bindings
+          Write-Host "`n>> Current synthia.bot bindings:" -ForegroundColor Cyan
+          Get-WebBinding -Name "synthia.bot" -ErrorAction SilentlyContinue | ForEach-Object {
+            Write-Host "   $($_.protocol) $($_.bindingInformation)"
+          }
+
+          Write-Host "`nDone! Ready for Demo_4_ApolloSpark provision." -ForegroundColor Green
