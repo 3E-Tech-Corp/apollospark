@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/images/logo.jpg" alt="ApolloSpark" className="w-8 h-8 rounded-full object-cover" />
+              <img src="/images/logo.jpg" alt="ApolloSpark" className="w-10 h-10 rounded-full object-cover ring-1 ring-amber-500/30" />
               <span className="text-lg font-bold bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent">ApolloSpark</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
