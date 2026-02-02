@@ -61,6 +61,7 @@ export default function About() {
                 { src: '/images/lynn-1.jpg', alt: 'Lynn Young — casual portrait' },
                 { src: '/images/lynn-5.jpg', alt: 'Lynn Young — elegant close-up' },
                 { src: '/images/lynn-2.jpg', alt: 'Lynn Young — denim editorial' },
+                { src: '/images/lynn-6.jpg', alt: 'Lynn Young practicing tai chi' },
                 { src: '/images/lynn-stage.jpg', alt: 'Lynn Young on stage' },
                 { src: '/images/lynn-gala.jpg', alt: 'Lynn Young at cultural gala' },
               ]}
