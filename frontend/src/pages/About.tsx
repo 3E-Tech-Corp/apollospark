@@ -35,35 +35,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Founder Spotlight */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden aspect-square border border-indigo-700/30">
-              {content.founder_bio?.imageUrl ? (
-                <img
-                  src={content.founder_bio.imageUrl}
-                  alt={content.founder_bio?.title || t('about.founder.default_title')}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-indigo-900/50 to-purple-900/50 flex items-center justify-center">
-                  <span className="text-8xl">🎹</span>
-                </div>
-              )}
-            </div>
-            <div>
-              <h2 className="text-sm uppercase tracking-widest text-amber-400 mb-4">{t('about.founder.label')}</h2>
-              <h3 className="text-4xl font-bold text-white mb-6">{content.founder_bio?.title || t('about.founder.default_title')}</h3>
-              <p className="text-gray-300 leading-relaxed text-lg">
-                {content.founder_bio?.body || t('about.founder.default_body')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Founder Detailed Bio */}
+      {/* Founder Bio */}
       <section className="py-24 px-4 bg-gradient-to-b from-indigo-950/30 via-gray-900 to-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
