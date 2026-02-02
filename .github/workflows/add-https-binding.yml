@@ -1,0 +1,56 @@
+name: Add HTTPS Binding
+
+on:
+  workflow_dispatch:
+    inputs:
+      site_name:
+        description: 'IIS Site Name'
+        required: true
+        type: string
+      host_header:
+        description: 'Host header (domain)'
+        required: true
+        type: string
+
+jobs:
+  bind:
+    runs-on: [self-hosted, windows, iis]
+    steps:
+      - name: Add HTTPS binding
+        shell: powershell
+        run: |
+          Import-Module WebAdministration
+          $siteName = "${{ inputs.site_name }}"
+          $hostHeader = "${{ inputs.host_header }}"
+
+          # Find synthia.bot cert in WebHosting store
+          $cert = Get-ChildItem Cert:\LocalMachine\WebHosting -ErrorAction SilentlyContinue | Where-Object {
+            $_.Subject -like "*synthia.bot*"
+          } | Sort-Object NotAfter -Descending | Select-Object -First 1
+
+          # Fallback: check My store
+          if (-not $cert) {
+            $cert = Get-ChildItem Cert:\LocalMachine\My | Where-Object {
+              $_.Subject -like "*synthia.bot*"
+            } | Sort-Object NotAfter -Descending | Select-Object -First 1
+          }
+
+          if (-not $cert) {
+            Write-Host "ERROR: No synthia.bot certificate found" -ForegroundColor Red
+            exit 1
+          }
+
+          $certStore = if ((Get-ChildItem "Cert:\LocalMachine\WebHosting\$($cert.Thumbprint)" -ErrorAction SilentlyContinue)) { "WebHosting" } else { "My" }
+          Write-Host "Using cert: $($cert.Subject) [Store: $certStore] [Expires: $($cert.NotAfter)]" -ForegroundColor Green
+
+          # Remove existing HTTPS binding if wrong cert, then add correct one
+          $existing = Get-WebBinding -Name $siteName -Protocol https -ErrorAction SilentlyContinue
+          if ($existing) {
+            Write-Host "Removing existing HTTPS binding..." -ForegroundColor Yellow
+            Remove-WebBinding -Name $siteName -Protocol https -Port 443 -HostHeader $hostHeader
+          }
+
+          New-WebBinding -Name $siteName -Protocol https -Port 443 -HostHeader $hostHeader -SslFlags 1
+          $binding = Get-WebBinding -Name $siteName -Protocol https
+          $binding.AddSslCertificate($cert.Thumbprint, $certStore)
+          Write-Host "HTTPS binding added: https://$hostHeader (SNI, $certStore store)" -ForegroundColor Green
