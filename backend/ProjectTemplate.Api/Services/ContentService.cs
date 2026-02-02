@@ -16,18 +16,20 @@ public class ContentService
     private SqlConnection CreateConnection() =>
         new(_config.GetConnectionString("DefaultConnection"));
 
-    public async Task<IEnumerable<ContentBlock>> GetAllAsync()
+    public async Task<IEnumerable<ContentBlock>> GetAllAsync(string locale = "en")
     {
         using var conn = CreateConnection();
         return await conn.QueryAsync<ContentBlock>(
-            "SELECT * FROM ContentBlocks ORDER BY SortOrder, [Key]");
+            "SELECT * FROM ContentBlocks WHERE Locale = @Locale ORDER BY SortOrder, [Key]",
+            new { Locale = locale });
     }
 
-    public async Task<ContentBlock?> GetByKeyAsync(string key)
+    public async Task<ContentBlock?> GetByKeyAsync(string key, string locale = "en")
     {
         using var conn = CreateConnection();
         return await conn.QueryFirstOrDefaultAsync<ContentBlock>(
-            "SELECT * FROM ContentBlocks WHERE [Key] = @Key", new { Key = key });
+            "SELECT * FROM ContentBlocks WHERE [Key] = @Key AND Locale = @Locale",
+            new { Key = key, Locale = locale });
     }
 
     public async Task<ContentBlock?> GetByIdAsync(int id)
@@ -62,10 +64,10 @@ public class ContentService
         return await GetByIdAsync(id);
     }
 
-    public async Task<ContentBlock?> UpdateByKeyAsync(string key, UpdateContentBlockRequest request)
+    public async Task<ContentBlock?> UpdateByKeyAsync(string key, UpdateContentBlockRequest request, string locale = "en")
     {
         using var conn = CreateConnection();
-        var existing = await GetByKeyAsync(key);
+        var existing = await GetByKeyAsync(key, locale);
         if (existing == null) return null;
 
         await conn.ExecuteAsync(@"
@@ -75,15 +77,16 @@ public class ContentService
                 ImageUrl = COALESCE(@ImageUrl, ImageUrl),
                 SortOrder = COALESCE(@SortOrder, SortOrder),
                 UpdatedAt = GETUTCDATE()
-            WHERE [Key] = @Key",
+            WHERE [Key] = @Key AND Locale = @Locale",
             new
             {
                 request.Title,
                 request.Body,
                 request.ImageUrl,
                 request.SortOrder,
-                Key = key
+                Key = key,
+                Locale = locale
             });
-        return await GetByKeyAsync(key);
+        return await GetByKeyAsync(key, locale);
     }
 }

@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useI18n } from '../contexts/I18nContext';
 import { contactApi } from '../services/api';
 
 export default function Contact() {
+  const { t } = useI18n();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -21,11 +23,19 @@ export default function Contact() {
 
   return (
     <div className="pt-16">
-      <section className="py-24 px-4 bg-gradient-to-br from-gray-950 via-indigo-950/40 to-gray-950">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-sm uppercase tracking-widest text-amber-400 mb-4">Contact</h2>
-          <h1 className="text-5xl font-bold text-white mb-6">Get in Touch</h1>
-          <p className="text-xl text-gray-300">We'd love to hear from you — whether you're an aspiring musician, potential partner, or supporter.</p>
+      <section className="relative py-24 px-4 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=1920&h=600&fit=crop"
+            alt="Piano"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-950/95 via-indigo-950/85 to-gray-950/95" />
+        </div>
+        <div className="relative max-w-4xl mx-auto text-center">
+          <h2 className="text-sm uppercase tracking-widest text-amber-400 mb-4">{t('contact.hero.label')}</h2>
+          <h1 className="text-5xl font-bold text-white mb-6">{t('contact.hero.title')}</h1>
+          <p className="text-xl text-gray-300">{t('contact.hero.subtitle')}</p>
         </div>
       </section>
 
@@ -33,27 +43,42 @@ export default function Contact() {
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Info */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">{t('contact.info.title')}</h3>
             <div className="space-y-6">
-              {[
-                { icon: '📧', label: 'Email', value: 'info@apollospark.org' },
-                { icon: '📍', label: 'Offices', value: 'New York, NY • Shanghai, China' },
-                { icon: '🌐', label: 'Web', value: 'apollospark.synthia.bot' },
-              ].map(item => (
-                <div key={item.label} className="flex items-start gap-4">
-                  <span className="text-2xl">{item.icon}</span>
-                  <div>
-                    <p className="text-amber-400 text-sm font-medium">{item.label}</p>
-                    <p className="text-gray-300">{item.value}</p>
-                  </div>
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">📧</span>
+                <div>
+                  <p className="text-amber-400 text-sm font-medium">{t('contact.info.email_label')}</p>
+                  <p className="text-gray-300">{t('contact.info.email_value')}</p>
                 </div>
-              ))}
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">📍</span>
+                <div>
+                  <p className="text-amber-400 text-sm font-medium">{t('contact.info.offices_label')}</p>
+                  <p className="text-gray-300 whitespace-pre-line">{t('contact.info.offices_value')}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">🏛️</span>
+                <div>
+                  <p className="text-amber-400 text-sm font-medium">{t('contact.info.beijing_label')}</p>
+                  <p className="text-gray-300 whitespace-pre-line">{t('contact.info.beijing_value')}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">🌐</span>
+                <div>
+                  <p className="text-amber-400 text-sm font-medium">{t('contact.info.web_label')}</p>
+                  <p className="text-gray-300">{t('contact.info.web_value')}</p>
+                </div>
+              </div>
             </div>
 
             <div className="mt-12 bg-gray-900/60 border border-gray-800 rounded-xl p-6">
-              <h4 className="text-lg font-semibold text-white mb-3">For Musicians</h4>
+              <h4 className="text-lg font-semibold text-white mb-3">{t('contact.musicians.title')}</h4>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Interested in our mentoring, touring, or masterclass programs? Include your instrument, experience, and what program interests you in your message.
+                {t('contact.musicians.desc')}
               </p>
             </div>
           </div>
@@ -62,10 +87,10 @@ export default function Contact() {
           <div>
             {status === 'sent' ? (
               <div className="bg-green-900/30 border border-green-700/50 rounded-xl p-8 text-center">
-                <span className="text-5xl block mb-4">✅</span>
-                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-gray-300">Thank you for reaching out. We'll get back to you soon.</p>
-                <button onClick={() => setStatus('idle')} className="mt-6 text-amber-400 hover:text-amber-300 text-sm">Send another message</button>
+                <span className="text-5xl block mb-4">{t('contact.success.icon')}</span>
+                <h3 className="text-2xl font-bold text-white mb-2">{t('contact.success.title')}</h3>
+                <p className="text-gray-300">{t('contact.success.text')}</p>
+                <button onClick={() => setStatus('idle')} className="mt-6 text-amber-400 hover:text-amber-300 text-sm">{t('contact.success.again')}</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -73,42 +98,42 @@ export default function Contact() {
                   <div className="bg-red-900/30 border border-red-700/50 text-red-300 px-4 py-3 rounded-lg text-sm">{errorMsg}</div>
                 )}
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Name *</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">{t('contact.form.name')}</label>
                   <input
                     required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
                     className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    placeholder="Your name"
+                    placeholder={t('contact.form.name_placeholder')}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Email *</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">{t('contact.form.email')}</label>
                   <input
                     type="email" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
                     className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    placeholder="your@email.com"
+                    placeholder={t('contact.form.email_placeholder')}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Subject</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">{t('contact.form.subject')}</label>
                   <input
                     value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })}
                     className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    placeholder="What's this about?"
+                    placeholder={t('contact.form.subject_placeholder')}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Message *</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">{t('contact.form.message')}</label>
                   <textarea
                     required rows={5} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                     className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
-                    placeholder="Tell us about yourself and how we can help..."
+                    placeholder={t('contact.form.message_placeholder')}
                   />
                 </div>
                 <button
                   type="submit" disabled={status === 'sending'}
                   className="w-full py-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 font-bold rounded-lg hover:from-amber-400 hover:to-yellow-400 disabled:opacity-50 transition-all shadow-lg shadow-amber-500/25"
                 >
-                  {status === 'sending' ? 'Sending...' : 'Send Message'}
+                  {status === 'sending' ? t('contact.form.sending') : t('contact.form.submit')}
                 </button>
               </form>
             )}

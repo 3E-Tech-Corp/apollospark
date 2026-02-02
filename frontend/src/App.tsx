@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { I18nProvider } from './contexts/I18nContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -45,33 +46,35 @@ function ProtectedRoute() {
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          {/* Public routes with layout */}
-          <Route element={<PublicLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/artists" element={<Artists />} />
-            <Route path="/artists/:id" element={<ArtistDetail />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
-
-          {/* Login (no layout) */}
-          <Route path="/login" element={<Login />} />
-
-          {/* Admin routes (protected) */}
-          <Route element={<ProtectedRoute />}>
+      <I18nProvider>
+        <AuthProvider>
+          <Routes>
+            {/* Public routes with layout */}
             <Route element={<PublicLayout />}>
-              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/artists" element={<Artists />} />
+              <Route path="/artists/:id" element={<ArtistDetail />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/contact" element={<Contact />} />
             </Route>
-          </Route>
 
-          {/* Catch-all */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AuthProvider>
+            {/* Login (no layout) */}
+            <Route path="/login" element={<Login />} />
+
+            {/* Admin routes (protected) */}
+            <Route element={<ProtectedRoute />}>
+              <Route element={<PublicLayout />}>
+                <Route path="/admin" element={<AdminDashboard />} />
+              </Route>
+            </Route>
+
+            {/* Catch-all */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </AuthProvider>
+      </I18nProvider>
     </BrowserRouter>
   );
 }

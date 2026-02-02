@@ -8,6 +8,7 @@ public class ContentBlock
     public string Body { get; set; } = string.Empty;
     public string ImageUrl { get; set; } = string.Empty;
     public int SortOrder { get; set; }
+    public string Locale { get; set; } = "en";
     public DateTime? UpdatedAt { get; set; }
 }
 
@@ -17,4 +18,5 @@ public class UpdateContentBlockRequest
     public string? Body { get; set; }
     public string? ImageUrl { get; set; }
     public int? SortOrder { get; set; }
+    public string? Locale { get; set; }
 }

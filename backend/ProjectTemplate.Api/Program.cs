@@ -106,28 +106,32 @@ using (var scope = app.Services.CreateScope())
                     );
                 END");
 
-            // Run the migration SQL file
-            var migrationPath = Path.Combine(AppContext.BaseDirectory, "Migrations", "001_InitialSchema.sql");
-            if (!File.Exists(migrationPath))
+            // Run all migration SQL files in order
+            var migrationDirs = new[]
             {
-                // Try relative path for development
-                migrationPath = Path.Combine(Directory.GetCurrentDirectory(), "Migrations", "001_InitialSchema.sql");
-            }
+                Path.Combine(AppContext.BaseDirectory, "Migrations"),
+                Path.Combine(Directory.GetCurrentDirectory(), "Migrations")
+            };
 
-            if (File.Exists(migrationPath))
+            var migrationDir = migrationDirs.FirstOrDefault(Directory.Exists);
+            if (migrationDir != null)
             {
-                var sql = await File.ReadAllTextAsync(migrationPath);
-                // Split by GO statements if any, otherwise execute as single batch
-                var batches = sql.Split(new[] { "\nGO\n", "\nGO\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var batch in batches)
+                var migrationFiles = Directory.GetFiles(migrationDir, "*.sql").OrderBy(f => f).ToArray();
+                foreach (var migrationPath in migrationFiles)
                 {
-                    if (!string.IsNullOrWhiteSpace(batch))
-                        await conn.ExecuteAsync(batch);
+                    var sql = await File.ReadAllTextAsync(migrationPath);
+                    var batches = sql.Split(new[] { "\nGO\n", "\nGO\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var batch in batches)
+                    {
+                        if (!string.IsNullOrWhiteSpace(batch))
+                            await conn.ExecuteAsync(batch);
+                    }
+                    app.Logger.LogInformation("Executed migration: {File}", Path.GetFileName(migrationPath));
                 }
             }
             else
             {
-                app.Logger.LogWarning("Migration file not found at {Path}", migrationPath);
+                app.Logger.LogWarning("No Migrations directory found");
             }
 
             app.Logger.LogInformation("Database migration completed successfully");

@@ -1,0 +1,294 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "artists": "艺术家",
+    "programs": "项目",
+    "events": "活动",
+    "contact": "联系我们"
+  },
+  "home": {
+    "hero": {
+      "title1": "以音乐",
+      "title2": "架起文化桥梁",
+      "subtitle": "培育新锐音乐人才，促进中美两国在音乐艺术领域的文化交流。",
+      "cta_artists": "探索我们的艺术家",
+      "cta_programs": "了解项目"
+    },
+    "mission": {
+      "label": "我们的使命",
+      "text": "ApolloSpark发掘、培养和提升年轻音乐人才——提供世界一流的指导、演出机会，以及在中美两国之间的巡演机会。"
+    },
+    "featured": {
+      "label": "特邀艺术家",
+      "title": "冉冉新星",
+      "view_all": "查看所有艺术家 →"
+    },
+    "events": {
+      "label": "即将到来的活动",
+      "title": "加入我们",
+      "view_all": "查看所有活动 →"
+    },
+    "testimonials": {
+      "label": "感言",
+      "title": "他们怎么说",
+      "items": [
+        {
+          "quote": "ApolloSpark改变了我的人生。导师计划给了我信心和技巧，让我勇于追逐在国际舞台上演出的梦想。",
+          "name": "陈伟",
+          "role": "钢琴，2023届"
+        },
+        {
+          "quote": "跨文化交流让我看到了一个全新的音乐表达世界。回来后我已经是一个不同的音乐家了。",
+          "name": "Sarah Mitchell",
+          "role": "小提琴，2024届"
+        },
+        {
+          "quote": "作为导师，看着这些年轻人才成长并跨越文化建立联系，是我职业生涯中最有价值的经历。",
+          "name": "张海伦博士",
+          "role": "创始人兼艺术总监"
+        }
+      ]
+    },
+    "impact": {
+      "label": "我们的影响",
+      "title": "创造改变",
+      "students": "位年轻艺术家获得支持",
+      "countries": "个城市覆盖",
+      "concerts": "场音乐会演出",
+      "mentors": "位专业导师"
+    },
+    "cta": {
+      "title": "加入我们的旅程",
+      "text": "无论你是年轻的音乐家、支持者还是音乐爱好者——ApolloSpark都有你的一席之地。",
+      "button": "联系我们"
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "关于我们",
+      "title": "我们的故事",
+      "subtitle": "自2020年以来，在中美两国的音乐传统之间搭建桥梁。"
+    },
+    "founder": {
+      "label": "认识我们的创始人",
+      "default_title": "我们的创始人",
+      "default_body": "一位致力于桥接音乐文化的远见卓识的领导者。"
+    },
+    "mission": {
+      "label": "我们的使命",
+      "default_title": "我们的使命",
+      "default_body": "促进中美两国在音乐艺术领域的文化交流。"
+    },
+    "vision": {
+      "label": "我们的愿景",
+      "default_title": "我们的愿景",
+      "default_body": "一个音乐作为文化间通用桥梁的世界。"
+    },
+    "values": {
+      "label": "我们的价值观",
+      "title": "我们的驱动力",
+      "exchange": {
+        "title": "文化交流",
+        "desc": "我们相信音乐超越国界。通过连接不同文化的年轻艺术家，我们促进理解与相互尊重。"
+      },
+      "excellence": {
+        "title": "追求卓越",
+        "desc": "我们致力于培育最高水平的艺术才华，提供世界一流的指导和演出机会。"
+      },
+      "community": {
+        "title": "社区共建",
+        "desc": "我们在两国的音乐家、教育者和观众之间建立持久的关系，构建一个全球性的音乐爱好者社区。"
+      }
+    },
+    "impact": {
+      "label": "数据说话",
+      "title": "我们的影响力",
+      "students": "位年轻音乐家",
+      "cities": "个城市",
+      "concerts": "场音乐会",
+      "mentors": "位导师"
+    }
+  },
+  "artists": {
+    "hero": {
+      "label": "我们的艺术家",
+      "title": "冉冉新星",
+      "subtitle": "来自中美两国的杰出年轻音乐家"
+    },
+    "filter": {
+      "all": "全部",
+      "usa": "美国",
+      "china": "中国"
+    },
+    "featured_badge": "特邀",
+    "none": "暂未找到艺术家。"
+  },
+  "artist_detail": {
+    "back": "← 返回艺术家列表",
+    "featured": "特邀"
+  },
+  "programs": {
+    "hero": {
+      "label": "我们的项目",
+      "title": "塑造音乐的未来",
+      "subtitle": "为年轻音乐家提供世界级的学习、成长和跨文化演出机会。"
+    },
+    "cta": {
+      "title": "准备好申请了吗？",
+      "text": "我们一直在寻找有才华的年轻音乐家。联系我们了解即将到来的机会。",
+      "button": "联系我们"
+    },
+    "fallback": {
+      "mentoring": {
+        "title": "导师计划",
+        "desc": "我们的旗舰项目将崭露头角的音乐家与两国的知名艺术家配对，进行为期一年的指导。"
+      },
+      "touring": {
+        "title": "巡演机会",
+        "desc": "年度音乐巡演带领年轻音乐家前往中美两国的著名场所演出。"
+      },
+      "masterclass": {
+        "title": "大师班",
+        "desc": "由世界级音乐家主持的深度工作坊，将技术指导与文化体验相结合。"
+      }
+    }
+  },
+  "events": {
+    "hero": {
+      "label": "活动",
+      "title": "音乐会与演出",
+      "subtitle": "体验跨文化音乐之美"
+    },
+    "tab": {
+      "upcoming": "即将到来",
+      "past": "已结束"
+    },
+    "none": {
+      "upcoming": "暂无即将到来的活动，请稍后查看！",
+      "past": "暂无已结束的活动。"
+    }
+  },
+  "contact": {
+    "hero": {
+      "label": "联系方式",
+      "title": "与我们联系",
+      "subtitle": "我们很乐意听到您的声音——无论您是有抱负的音乐家、潜在合作伙伴还是支持者。"
+    },
+    "info": {
+      "title": "让我们建立联系",
+      "email_label": "电子邮箱",
+      "email_value": "info@apollospark.org",
+      "offices_label": "纽约办公室",
+      "offices_value": "纽约州纽约市西57街123号400室\n邮编 10019",
+      "beijing_label": "北京办公室",
+      "beijing_value": "北京市朝阳区8号楼\n邮编 100020",
+      "web_label": "网站",
+      "web_value": "apollospark.synthia.bot"
+    },
+    "musicians": {
+      "title": "致音乐家",
+      "desc": "对我们的导师、巡演或大师班项目感兴趣？请在留言中说明您的乐器、经验以及感兴趣的项目。"
+    },
+    "form": {
+      "name": "姓名 *",
+      "name_placeholder": "您的姓名",
+      "email": "电子邮箱 *",
+      "email_placeholder": "your@email.com",
+      "subject": "主题",
+      "subject_placeholder": "关于什么？",
+      "message": "留言 *",
+      "message_placeholder": "告诉我们关于您的情况以及我们如何帮助您...",
+      "submit": "发送消息",
+      "sending": "发送中..."
+    },
+    "success": {
+      "icon": "✅",
+      "title": "消息已发送！",
+      "text": "感谢您的来信。我们会尽快回复您。",
+      "again": "发送另一条消息"
+    }
+  },
+  "footer": {
+    "desc": "在中美两国的音乐传统之间架起桥梁。培育年轻人才，建立持久的文化联系。",
+    "links_title": "快速链接",
+    "connect_title": "联系方式",
+    "copyright": "ApolloSpark 版权所有。",
+    "admin": "管理"
+  },
+  "login": {
+    "title": "管理员登录",
+    "subtitle": "ApolloSpark 管理后台",
+    "username": "用户名",
+    "username_placeholder": "输入用户名",
+    "password": "密码",
+    "password_placeholder": "输入密码",
+    "submit": "登录",
+    "submitting": "登录中..."
+  },
+  "admin": {
+    "title": "管理控制台",
+    "welcome": "欢迎",
+    "logout": "退出",
+    "tabs": {
+      "content": "内容",
+      "artists": "艺术家",
+      "events": "活动",
+      "messages": "消息"
+    },
+    "locale_label": "语言",
+    "content": {
+      "title": "内容模块",
+      "key": "键名",
+      "block_title": "标题",
+      "body": "正文",
+      "image_url": "图片链接",
+      "sort_order": "排序",
+      "save": "保存",
+      "saving": "保存中...",
+      "saved": "已保存！",
+      "no_blocks": "未找到内容模块。"
+    },
+    "artists_section": {
+      "title": "艺术家",
+      "add": "添加艺术家",
+      "name": "姓名",
+      "instrument": "乐器",
+      "country": "国家",
+      "bio": "简介",
+      "image_url": "图片链接",
+      "featured": "特邀",
+      "sort_order": "排序",
+      "save": "保存",
+      "cancel": "取消",
+      "edit": "编辑",
+      "delete": "删除",
+      "confirm_delete": "确定删除此艺术家？"
+    },
+    "events_section": {
+      "title": "活动",
+      "add": "添加活动",
+      "event_title": "标题",
+      "description": "描述",
+      "date": "日期",
+      "location": "地点",
+      "image_url": "图片链接",
+      "upcoming": "即将到来",
+      "sort_order": "排序",
+      "save": "保存",
+      "cancel": "取消",
+      "edit": "编辑",
+      "delete": "删除",
+      "confirm_delete": "确定删除此活动？"
+    },
+    "messages_section": {
+      "title": "联系消息",
+      "total": "总消息数",
+      "unread": "未读",
+      "read": "已读",
+      "mark_read": "标为已读",
+      "delete": "删除",
+      "no_messages": "暂无联系消息。"
+    }
+  }
+}

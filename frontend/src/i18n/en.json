@@ -1,0 +1,294 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "artists": "Artists",
+    "programs": "Programs",
+    "events": "Events",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title1": "Where Music",
+      "title2": "Bridges Cultures",
+      "subtitle": "Nurturing young rising talents and fostering cultural exchange in the musical arts between the USA and China.",
+      "cta_artists": "Discover Our Artists",
+      "cta_programs": "Our Programs"
+    },
+    "mission": {
+      "label": "Our Mission",
+      "text": "ApolloSpark discovers, nurtures, and elevates young musical talents — providing world-class mentoring, performance exposure, and touring opportunities across the USA and China."
+    },
+    "featured": {
+      "label": "Featured Artists",
+      "title": "Rising Stars",
+      "view_all": "View All Artists →"
+    },
+    "events": {
+      "label": "Upcoming Events",
+      "title": "Join Us",
+      "view_all": "View All Events →"
+    },
+    "testimonials": {
+      "label": "Testimonials",
+      "title": "What People Say",
+      "items": [
+        {
+          "quote": "ApolloSpark changed my life. The mentoring program gave me the confidence and skills to pursue my dream of performing internationally.",
+          "name": "Wei Chen",
+          "role": "Piano, Class of 2023"
+        },
+        {
+          "quote": "The cross-cultural exchange opened my eyes to a whole new world of musical expression. I came back a different musician.",
+          "name": "Sarah Mitchell",
+          "role": "Violin, Class of 2024"
+        },
+        {
+          "quote": "As a mentor, watching these young talents grow and connect across cultures has been the most rewarding experience of my career.",
+          "name": "Dr. Helen Zhang",
+          "role": "Founder & Artistic Director"
+        }
+      ]
+    },
+    "impact": {
+      "label": "Our Impact",
+      "title": "Making a Difference",
+      "students": "Young Artists Supported",
+      "countries": "Cities Reached",
+      "concerts": "Concerts Performed",
+      "mentors": "Expert Mentors"
+    },
+    "cta": {
+      "title": "Be Part of the Journey",
+      "text": "Whether you're a young musician, a supporter, or a music lover — there's a place for you at ApolloSpark.",
+      "button": "Get in Touch"
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "About Us",
+      "title": "Our Story",
+      "subtitle": "Building bridges between musical traditions of the USA and China since 2020."
+    },
+    "founder": {
+      "label": "Meet Our Founder",
+      "default_title": "Our Founder",
+      "default_body": "A visionary leader dedicated to bridging musical cultures."
+    },
+    "mission": {
+      "label": "Our Mission",
+      "default_title": "Our Mission",
+      "default_body": "Promoting cultural exchange in the musical arts between the USA and China."
+    },
+    "vision": {
+      "label": "Our Vision",
+      "default_title": "Our Vision",
+      "default_body": "A world where music serves as a universal bridge between cultures."
+    },
+    "values": {
+      "label": "Our Values",
+      "title": "What Drives Us",
+      "exchange": {
+        "title": "Cultural Exchange",
+        "desc": "We believe music transcends borders. By connecting young artists across cultures, we foster understanding and mutual respect."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "desc": "We are committed to nurturing the highest level of artistry, providing world-class mentoring and performance opportunities."
+      },
+      "community": {
+        "title": "Community",
+        "desc": "We build lasting relationships between musicians, educators, and audiences in both countries, creating a global community of music lovers."
+      }
+    },
+    "impact": {
+      "label": "By the Numbers",
+      "title": "Our Impact",
+      "students": "Young Musicians",
+      "cities": "Cities",
+      "concerts": "Concerts",
+      "mentors": "Mentors"
+    }
+  },
+  "artists": {
+    "hero": {
+      "label": "Our Artists",
+      "title": "Rising Talents",
+      "subtitle": "Exceptional young musicians from the USA and China"
+    },
+    "filter": {
+      "all": "All Artists",
+      "usa": "USA",
+      "china": "China"
+    },
+    "featured_badge": "Featured",
+    "none": "No artists found."
+  },
+  "artist_detail": {
+    "back": "← Back to Artists",
+    "featured": "Featured"
+  },
+  "programs": {
+    "hero": {
+      "label": "Our Programs",
+      "title": "Shaping the Future of Music",
+      "subtitle": "World-class opportunities for young musicians to learn, grow, and perform across cultures."
+    },
+    "cta": {
+      "title": "Ready to Apply?",
+      "text": "We're always looking for talented young musicians. Get in touch to learn about upcoming opportunities.",
+      "button": "Contact Us"
+    },
+    "fallback": {
+      "mentoring": {
+        "title": "Mentoring Program",
+        "desc": "Our flagship program pairs rising musicians with established artists from both countries for year-long mentorship."
+      },
+      "touring": {
+        "title": "Touring Opportunities",
+        "desc": "Annual concert tours bring young musicians to perform at prestigious venues across the USA and China."
+      },
+      "masterclass": {
+        "title": "Masterclasses",
+        "desc": "Intensive workshops led by world-class musicians, combining technical instruction with cultural immersion."
+      }
+    }
+  },
+  "events": {
+    "hero": {
+      "label": "Events",
+      "title": "Concerts & Performances",
+      "subtitle": "Experience the beauty of cross-cultural music"
+    },
+    "tab": {
+      "upcoming": "Upcoming",
+      "past": "Past"
+    },
+    "none": {
+      "upcoming": "No upcoming events. Check back soon!",
+      "past": "No past events to display."
+    }
+  },
+  "contact": {
+    "hero": {
+      "label": "Contact",
+      "title": "Get in Touch",
+      "subtitle": "We'd love to hear from you — whether you're an aspiring musician, potential partner, or supporter."
+    },
+    "info": {
+      "title": "Let's Connect",
+      "email_label": "Email",
+      "email_value": "info@apollospark.org",
+      "offices_label": "New York Office",
+      "offices_value": "123 West 57th Street, Suite 400\nNew York, NY 10019",
+      "beijing_label": "Beijing Office",
+      "beijing_value": "Chaoyang District, Building 8\nBeijing, China 100020",
+      "web_label": "Web",
+      "web_value": "apollospark.synthia.bot"
+    },
+    "musicians": {
+      "title": "For Musicians",
+      "desc": "Interested in our mentoring, touring, or masterclass programs? Include your instrument, experience, and what program interests you in your message."
+    },
+    "form": {
+      "name": "Name *",
+      "name_placeholder": "Your name",
+      "email": "Email *",
+      "email_placeholder": "your@email.com",
+      "subject": "Subject",
+      "subject_placeholder": "What's this about?",
+      "message": "Message *",
+      "message_placeholder": "Tell us about yourself and how we can help...",
+      "submit": "Send Message",
+      "sending": "Sending..."
+    },
+    "success": {
+      "icon": "✅",
+      "title": "Message Sent!",
+      "text": "Thank you for reaching out. We'll get back to you soon.",
+      "again": "Send another message"
+    }
+  },
+  "footer": {
+    "desc": "Bridging musical traditions between the USA and China. Nurturing young talents, creating lasting cultural connections.",
+    "links_title": "Quick Links",
+    "connect_title": "Connect",
+    "copyright": "ApolloSpark. All rights reserved.",
+    "admin": "Admin"
+  },
+  "login": {
+    "title": "Admin Login",
+    "subtitle": "ApolloSpark Administration",
+    "username": "Username",
+    "username_placeholder": "Enter username",
+    "password": "Password",
+    "password_placeholder": "Enter password",
+    "submit": "Sign In",
+    "submitting": "Signing in..."
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "tabs": {
+      "content": "Content",
+      "artists": "Artists",
+      "events": "Events",
+      "messages": "Messages"
+    },
+    "locale_label": "Language",
+    "content": {
+      "title": "Content Blocks",
+      "key": "Key",
+      "block_title": "Title",
+      "body": "Body",
+      "image_url": "Image URL",
+      "sort_order": "Sort Order",
+      "save": "Save",
+      "saving": "Saving...",
+      "saved": "Saved!",
+      "no_blocks": "No content blocks found."
+    },
+    "artists_section": {
+      "title": "Artists",
+      "add": "Add Artist",
+      "name": "Name",
+      "instrument": "Instrument",
+      "country": "Country",
+      "bio": "Bio",
+      "image_url": "Image URL",
+      "featured": "Featured",
+      "sort_order": "Sort Order",
+      "save": "Save",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirm_delete": "Delete this artist?"
+    },
+    "events_section": {
+      "title": "Events",
+      "add": "Add Event",
+      "event_title": "Title",
+      "description": "Description",
+      "date": "Date",
+      "location": "Location",
+      "image_url": "Image URL",
+      "upcoming": "Upcoming",
+      "sort_order": "Sort Order",
+      "save": "Save",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirm_delete": "Delete this event?"
+    },
+    "messages_section": {
+      "title": "Contact Messages",
+      "total": "Total Messages",
+      "unread": "Unread",
+      "read": "Read",
+      "mark_read": "Mark Read",
+      "delete": "Delete",
+      "no_messages": "No contact messages yet."
+    }
+  }
+}

@@ -33,7 +33,6 @@ async function request<T>(endpoint: string, options: ApiOptions = {}): Promise<T
   });
 
   if (response.status === 401) {
-    // Don't redirect for login/setup endpoints — let the form show the error
     if (!endpoint.includes('/auth/login') && !endpoint.includes('/auth/setup')) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
@@ -92,6 +91,7 @@ export interface ContentBlock {
   body: string;
   imageUrl: string;
   sortOrder: number;
+  locale: string;
   updatedAt: string | null;
 }
 
@@ -125,10 +125,13 @@ export const eventApi = {
 };
 
 export const contentApi = {
-  list: () => api.get<ContentBlock[]>('/content'),
-  get: (key: string) => api.get<ContentBlock>(`/content/${key}`),
+  list: (locale: string = 'en') => api.get<ContentBlock[]>(`/content?locale=${locale}`),
+  get: (key: string, locale: string = 'en') => api.get<ContentBlock>(`/content/${key}?locale=${locale}`),
   update: (id: number, data: Partial<ContentBlock>) => api.put<ContentBlock>(`/content/${id}`, data),
-  updateByKey: (key: string, data: Partial<ContentBlock>) => api.put<ContentBlock>(`/content/key/${key}`, data),
+  updateByKey: (key: string, data: Partial<ContentBlock>, locale: string = 'en') =>
+    api.put<ContentBlock>(`/content/key/${key}?locale=${locale}`, data),
+  create: (data: Partial<ContentBlock>) => api.post<{ id: number }>('/content', data),
+  delete: (id: number) => api.delete<{ message: string }>(`/content/${id}`),
 };
 
 export const contactApi = {
