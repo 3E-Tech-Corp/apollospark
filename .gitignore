@@ -1,29 +1,10 @@
-# Node
 node_modules/
+dist/
 frontend/dist/
-frontend/.vite/
-
-# .NET
 bin/
 obj/
 publish/
 *.user
 *.suo
-*.userosscache
-*.sln.docstates
-
-# IDE
 .vs/
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Environment
-.env
-.env.local
-appsettings.Development.json
+appsettings.Production.json
