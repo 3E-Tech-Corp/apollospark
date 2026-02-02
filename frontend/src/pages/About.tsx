@@ -63,6 +63,92 @@ export default function About() {
         </div>
       </section>
 
+      {/* Founder Detailed Bio */}
+      <section className="py-24 px-4 bg-gradient-to-b from-indigo-950/30 via-gray-900 to-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-sm uppercase tracking-widest text-amber-400 mb-4">
+              {locale === 'zh' ? '创始人' : 'Our Founder'}
+            </h2>
+            <h3 className="text-4xl font-bold text-white mb-2">
+              {locale === 'zh' ? '杨心灵 (Lynn Young)' : 'Xinling Yang (Lynn Young)'}
+            </h3>
+            <p className="text-amber-400/80 text-lg">
+              {locale === 'zh' ? '杨心灵 · 旅美音乐剧演员 · "韶山百灵鸟"' : '"Shaoshan Skylark" · Vocalist · Musical Theatre Performer'}
+            </p>
+          </div>
+
+          {/* Photo Gallery */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="rounded-2xl overflow-hidden border border-indigo-700/30 aspect-[3/4]">
+              <img src="/images/lynn-headshot.jpg" alt="Lynn Young portrait" className="w-full h-full object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-amber-700/30 aspect-[3/4]">
+              <img src="/images/lynn-stage.jpg" alt="Lynn Young performing on stage" className="w-full h-full object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-indigo-700/30 aspect-[3/4]">
+              <img src="/images/lynn-gala.jpg" alt="Lynn Young at cultural gala" className="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          {/* Bio Text */}
+          <div className="max-w-4xl mx-auto space-y-6">
+            {locale === 'zh' ? (
+              <>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  杨心灵（Lynn Young），毕业于中国音乐学院，中国东方演艺集团独唱演员、旅美音乐剧演员。她被海内外媒体赞誉为"韶山百灵鸟"，并担任城市代言人。
+                </p>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  她荣获中宣部第十一届精神文明建设"五个一工程"奖，并于2008年在CCTV-3《星光大道》节目中获得周冠军。她的个人代表作品包括《我陪妈妈去韶山》《喝彩》等。
+                </p>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  作为ApolloSpark的创始人，Lynn致力于在中美两国之间搭建音乐文化交流的桥梁。她深信音乐是跨越语言和文化的通用语言，能够将不同背景的人们联结在一起。通过ApolloSpark，她为年轻音乐人才提供指导、演出机会和国际巡演的平台，帮助他们在世界舞台上绽放光芒。
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  Xinling Yang, known as Lynn Young, is a graduate of the prestigious China Conservatory of Music and a solo vocalist with the China Oriental Performing Arts Group. A celebrated musical theatre performer in the United States, she has been praised by media at home and abroad as the <span className="text-amber-400 font-medium">"Shaoshan Skylark"</span> and serves as a city ambassador.
+                </p>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  Lynn is a recipient of the <span className="text-amber-400 font-medium">11th "Five-One Project Award"</span> for Spiritual Civilization Construction by the Publicity Department of the CPC Central Committee — one of China's most prestigious cultural honors. She was also the <span className="text-amber-400 font-medium">Weekly Champion of CCTV-3's <em>Avenue of Stars</em></span> (星光大道) in 2008. Her representative works include <em>"I Accompany My Mother to Shaoshan"</em> (我陪妈妈去韶山) and <em>"Cheers"</em> (喝彩), among others.
+                </p>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  As the founder of ApolloSpark, Lynn is dedicated to building bridges of musical and cultural exchange between the United States and China. She believes that music is a universal language that transcends borders and unites people from all backgrounds. Through ApolloSpark, she provides young musical talents with mentorship, performance opportunities, and international touring experiences — helping them shine on the world stage.
+                </p>
+              </>
+            )}
+          </div>
+
+          {/* Highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
+            {[
+              {
+                icon: '🎓',
+                title: locale === 'zh' ? '中国音乐学院' : 'China Conservatory of Music',
+                desc: locale === 'zh' ? '中国顶尖音乐学府毕业' : 'Graduate of China\'s premier music institution'
+              },
+              {
+                icon: '🏆',
+                title: locale === 'zh' ? '"五个一工程"奖' : 'Five-One Project Award',
+                desc: locale === 'zh' ? '中宣部第十一届精神文明建设奖' : 'CPC Central Committee cultural honor'
+              },
+              {
+                icon: '⭐',
+                title: locale === 'zh' ? '《星光大道》周冠军' : 'Avenue of Stars Champion',
+                desc: locale === 'zh' ? 'CCTV-3 2008年度周冠军' : 'CCTV-3 Weekly Champion, 2008'
+              },
+            ].map(item => (
+              <div key={item.title} className="bg-gray-800/50 border border-gray-700/50 rounded-xl p-6 text-center">
+                <span className="text-3xl block mb-3">{item.icon}</span>
+                <h4 className="text-white font-semibold mb-1">{item.title}</h4>
+                <p className="text-gray-400 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Mission */}
       <section className="py-24 px-4 bg-gradient-to-b from-transparent via-amber-500/5 to-transparent">
         <div className="max-w-4xl mx-auto text-center">
